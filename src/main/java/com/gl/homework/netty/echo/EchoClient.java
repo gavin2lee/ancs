@@ -30,7 +30,6 @@ public final class EchoClient {
 
     public static void main(String[] args) throws Exception {
 
-        // Configure the client.
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();
@@ -41,20 +40,17 @@ public final class EchoClient {
                  @Override
                  public void initChannel(SocketChannel ch) throws Exception {
                      ChannelPipeline p = ch.pipeline();
-                	 p.addLast("framer", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
+                	 //p.addLast("framer", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
                      p.addLast("decoder", new StringDecoder(Charset.forName("UTF-8")));
                      p.addLast("encoder", new StringEncoder(Charset.forName("UTF-8")));
                      p.addLast(new EchoClientHandler());
                  }
              });
 
-            // Start the client.
             ChannelFuture f = b.connect(HOST, PORT).sync();
 
-            // Wait until the connection is closed.
             f.channel().closeFuture().sync();
         } finally {
-            // Shut down the event loop to terminate all threads.
             group.shutdownGracefully();
         }
     }

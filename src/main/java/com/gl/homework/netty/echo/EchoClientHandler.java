@@ -22,35 +22,26 @@ public class EchoClientHandler extends ChannelInboundHandlerAdapter {
 	}
 
 	@Override
-	public void channelActive(ChannelHandlerContext ctx) {
-		try {
-			ctx.writeAndFlush(Unpooled.buffer(EchoClient.SIZE).writeBytes("AAAAAAAAAAA".getBytes("UTF-8")));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+	public void channelActive(ChannelHandlerContext ctx) throws UnsupportedEncodingException {
+		byte[] req = "AAAAAAAAAAA".getBytes("UTF-8");
+		ctx.writeAndFlush(Unpooled.buffer(req.length).writeBytes(req));
+
 	}
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) {
 		System.out.println("Client read:" + msg);
-		ctx.writeAndFlush(msg);
+//		ctx.writeAndFlush(msg);
 	}
 
 	@Override
 	public void channelReadComplete(ChannelHandlerContext ctx) {
-		System.out.println("client");
+		System.out.println("channelReadComplete");
 		ctx.flush();
 	}
 
 	@Override
-	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) { // Close
-																				// the
-																				// connection
-																				// when
-																				// an
-																				// exception
-																				// is
-																				// raised.
+	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 		cause.printStackTrace();
 		ctx.close();
 	}

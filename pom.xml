@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 
-		<groupId>com.gl.homework</groupId>
-		<artifactId>ancs</artifactId>
-		<version>1.0.0.0-SNAPSHOT</version>
+	<groupId>com.gl.homework</groupId>
+	<artifactId>ancs</artifactId>
+	<version>1.0.0.0-SNAPSHOT</version>
 
 	<name>ancs</name>
 	<packaging>jar</packaging>
@@ -19,8 +19,8 @@
 			<artifactId>netty-all</artifactId>
 			<version>4.1.6.Final</version>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -81,26 +81,26 @@
 
 	</dependencies>
 
-  <build>
-  		<plugins>
-  			<plugin>
-  				<groupId>org.apache.maven.plugins</groupId>
-  				<artifactId>maven-resources-plugin</artifactId>
-  				<version>2.6</version>
-  				<configuration>
-  					<encoding>${project.build.source.encoding}</encoding>
-  				</configuration>
-  			</plugin>
-  			<plugin>
-  				<groupId>org.apache.maven.plugins</groupId>
-  				<artifactId>maven-compiler-plugin</artifactId>
-  				<version>3.3</version>
-  				<configuration>
-  					<source>${java.version}</source>
-  					<target>${java.version}</target>
-  					<encoding>${project.build.source.encoding}</encoding>
-  				</configuration>
-  			</plugin>
-  		</plugins>
-  	</build>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>${project.build.source.encoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.source.encoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
