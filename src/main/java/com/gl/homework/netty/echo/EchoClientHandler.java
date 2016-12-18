@@ -23,7 +23,7 @@ public class EchoClientHandler extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws UnsupportedEncodingException {
-		byte[] req = "AAAAAAAAAAA".getBytes("UTF-8");
+		byte[] req = "AAAAAAAAAAA\n".getBytes("UTF-8");
 		ctx.writeAndFlush(Unpooled.buffer(req.length).writeBytes(req));
 
 	}

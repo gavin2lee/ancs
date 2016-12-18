@@ -33,8 +33,8 @@ public class EchoServer {
 					.childHandler(new ChannelInitializer<SocketChannel>() {
 						@Override
 						public void initChannel(SocketChannel ch) throws Exception {
-							//ch.pipeline().addLast("framer",
-							//		new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
+							ch.pipeline().addLast("framer",
+									new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
 							ch.pipeline().addLast("decoder", new StringDecoder(Charset.forName("UTF-8")));
 							ch.pipeline().addLast("encoder", new StringEncoder(Charset.forName("UTF-8")));
 							ch.pipeline().addLast(new EchoServerHandler());
